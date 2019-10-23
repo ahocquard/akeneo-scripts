@@ -25,3 +25,17 @@ If you have an error to import the dump because Mysql disconnects, execute this 
 ```
 SET GLOBAL max_allowed_packet=1073741824;
 ```
+
+## Create body to profile API product import
+
+```
+curl -X GET \                
+  'http://localhost:8080/api/rest/v1/products?limit=100' \
+  -H 'Authorization: Bearer NjJmZTVhNGQ3NjVlZWE1MzhhOWUwMWFmM2M3YWM3OTAyNDk4NjVhNzQyYjljZDUyZmY1YTA1ZGMzMjI4MmI1Yg' | tac | tac | php ./api.php > body.txt
+```
+
+then:
+
+```
+docker-compose run -u www-data --rm php blackfire curl -X PATCH http://httpd/api/rest/v1/products -H 'authorization: Bearer NWM5Mzg0MWE0YjE2MGJlM2JmNGIxY2QxMjRlMTNkYjUzMDU4NDhjNzNlMWNjMWMyZmMwZGZhNTkxZjlkZTUxYw'  -H 'cache-control: no-cache' -H 'content-type: application/vnd.akeneo.collection+json' --data-binary '@body.txt'
+```
