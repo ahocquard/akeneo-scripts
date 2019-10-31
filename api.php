@@ -6,5 +6,7 @@ $products = $response['_embedded']['items'];
 $productsApiFormatPatch = '';
 foreach ($products as $product) {
     unset($product['_links']);
-    $productsApiFormatPatch .= json_encode($products) . PHP_EOL;
+    $productsApiFormatPatch .= json_encode($product) . PHP_EOL;
 }
+
+echo $productsApiFormatPatch;

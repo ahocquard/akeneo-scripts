@@ -29,7 +29,7 @@ SET GLOBAL max_allowed_packet=1073741824;
 ## Create body to profile API product import
 
 ```
-curl -X GET \                
+curl -X GET \
   'http://localhost:8080/api/rest/v1/products?limit=100' \
   -H 'Authorization: Bearer NjJmZTVhNGQ3NjVlZWE1MzhhOWUwMWFmM2M3YWM3OTAyNDk4NjVhNzQyYjljZDUyZmY1YTA1ZGMzMjI4MmI1Yg' | tac | tac | php ./api.php > body.txt
 ```
